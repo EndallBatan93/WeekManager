@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "380671023677",
+    "firebase_url": "https://weekmanager-76d37.firebaseio.com",
+    "project_id": "weekmanager-76d37",
+    "storage_bucket": "weekmanager-76d37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380671023677:android:72f91bd0fee2a9b0",
+        "android_client_info": {
+          "package_name": "com.example.endallbatan.weekmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380671023677-culhki95drv7o4le6hjgs257ucp1gj80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.endallbatan.weekmanager",
+            "certificate_hash": "40b5196b5ac222ad1c236aab8484467b0b3e3998"
+          }
+        },
+        {
+          "client_id": "380671023677-hq24727ou24ag8lklcur861un06s127n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADKbbNkzRBUyBdlRDXi2DiUxdTLgrmaSE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380671023677-hq24727ou24ag8lklcur861un06s127n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WeekPlanner</string>
+    <string name="registerButtonValue">Register</string>
+    <string name="loginButtonValue">Login</string>
+    <string name="usernameValue">Chose a username</string>
+    <string name="email">Choose an email-adress</string>
+    <string name="password">Choose a password</string>
+    <string name="createAccount">Create Account</string>
+</resources>
