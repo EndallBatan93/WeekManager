@@ -6,4 +6,6 @@
     <string name="email">Choose an email-adress</string>
     <string name="password">Choose a password</string>
     <string name="createAccount">Create Account</string>
+    <string name="faceBook">Facebook</string>
+    <string name="loginString">--------Log in with-----------</string>
 </resources>
