@@ -8,4 +8,7 @@
     <string name="createAccount">Create Account</string>
     <string name="faceBook">Facebook</string>
     <string name="loginString">--------Log in with-----------</string>
+    <string name="passwordplaceholder">Enter password min size 6 characters</string>
+    <string name="emailplaceholder">Enter valid email adress</string>
+    <string name="usernameplaceholder">Choose a username</string>
 </resources>

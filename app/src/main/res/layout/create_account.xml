@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/username"
         android:layout_width="293dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
@@ -16,14 +16,14 @@
         android:layout_marginTop="64dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/usernameValue"
+        android:hint="@string/usernameplaceholder"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/email"
         android:layout_width="293dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
@@ -31,14 +31,14 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/email"
+        android:hint="@string/emailplaceholder"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/password"
         android:layout_width="294dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -46,20 +46,20 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:hint="@string/passwordplaceholder"
         android:inputType="textPassword"
-        android:text="@string/password"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.439"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.047"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="16dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/createAccountButton"
         style="@android:style/Widget.Button.Inset"
         android:layout_width="318dp"
         android:layout_height="38dp"
@@ -79,31 +79,31 @@
 
     <Button
         android:id="@+id/facebookLogin"
-        android:layout_width="56dp"
-        android:layout_height="39dp"
+        android:layout_width="50dp"
+        android:layout_height="38dp"
         android:layout_marginBottom="121dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="34dp"
         android:background="@drawable/facebookicon"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/googleLogin"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
         android:id="@+id/googleLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="53dp"
         android:layout_marginBottom="121dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="34dp"
         android:background="@drawable/common_google_signin_btn_icon_light"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountButton"
         app:layout_constraintEnd_toStartOf="@+id/facebookLogin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </android.support.constraint.ConstraintLayout>
