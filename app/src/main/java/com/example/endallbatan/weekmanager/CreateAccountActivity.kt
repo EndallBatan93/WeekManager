@@ -9,9 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ProviderQueryResult
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -81,6 +79,7 @@ class CreateAccountActivity : AppCompatActivity() {
                             redirectUserToMainActivity()
                         } else {
                             Log.w(TAG, "createUserWithEmailAdress: failure", task.exception)
+                            Log.i(TAG, task.exception.toString())
                             Toast.makeText(this@CreateAccountActivity,
                                     "Authentication failed", Toast.LENGTH_SHORT).show()
                         }
@@ -89,29 +88,13 @@ class CreateAccountActivity : AppCompatActivity() {
     }
 
     private fun validateEmailAdress(email: String?) {
-        var emailValid = false
         val emailPattern = Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
         if (emailPattern.containsMatchIn(email.toString())) {
             Log.i(TAG, "email is valid")
-            emailValid = true
-
+            emailIsValid = "true"
         } else {
             Toast.makeText(this@CreateAccountActivity,
                     "Email adress is not valid", Toast.LENGTH_SHORT).show()
-        }
-        if (emailValid) {
-            mFirebaseAuth!!.fetchProvidersForEmail("emailaddress@gmail.com").addOnCompleteListener(OnCompleteListener<ProviderQueryResult> { task ->
-                if (task.isSuccessful) {
-                    val check = !task.result.providers!!.isEmpty()
-                    if (check) {
-                        Log.i(TAG, "email is available")
-                        emailIsValid = "true"
-                    } else {
-                        Toast.makeText(this@CreateAccountActivity,
-                                "Email adress is already in use", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
         }
     }
 
