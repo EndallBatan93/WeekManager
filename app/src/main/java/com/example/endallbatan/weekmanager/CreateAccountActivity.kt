@@ -9,7 +9,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ProviderQueryResult
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -49,9 +51,19 @@ class CreateAccountActivity : AppCompatActivity() {
         email = uiEmail?.text.toString()
         password = uipassword?.text.toString()
 
+        validateInputStringsNotEmpty(username, email, password);
 
-        // only if all fields are filled
-        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+        if (inputsNotEmpty.equals("true")) {
+            validateEmailAdress(email)
+//            checkIfUserExists(username)
+//            checkPasswordSafety(password)
+            startRegisteringAtFirebaseDatabase()
+        }
+
+    }
+
+    private fun startRegisteringAtFirebaseDatabase() {
+        if (emailIsValid.equals("true")) {
             mFirebaseAuth!!
                     .createUserWithEmailAndPassword(email!!, password!!)
                     .addOnCompleteListener(this) { task ->
@@ -61,27 +73,70 @@ class CreateAccountActivity : AppCompatActivity() {
                             //creating userid with uuid
                             val userid = mFirebaseAuth!!.currentUser!!.uid
 
-//                        verifyEmail()
+    //                        verifyEmail()
 
                             val currenUserDb = mDatabaseReference!!.child(userid)
                             currenUserDb.child("username").setValue(username)
 
-                        redirectUserToMainActivity()
+                            redirectUserToMainActivity()
                         } else {
-                            Log.w(TAG,"createUserWithEmailAdress: failure", task.exception)
+                            Log.w(TAG, "createUserWithEmailAdress: failure", task.exception)
                             Toast.makeText(this@CreateAccountActivity,
                                     "Authentication failed", Toast.LENGTH_SHORT).show()
                         }
                     }
-        } else { // error case when fields are empty
+        }
+    }
+
+    private fun validateEmailAdress(email: String?) {
+        var emailValid = false
+        val emailPattern = Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
+        if (emailPattern.containsMatchIn(email.toString())) {
+            Log.i(TAG, "email is valid")
+            emailValid = true
+
+        } else {
+            Toast.makeText(this@CreateAccountActivity,
+                    "Email adress is not valid", Toast.LENGTH_SHORT).show()
+        }
+        if (emailValid) {
+            mFirebaseAuth!!.fetchProvidersForEmail("emailaddress@gmail.com").addOnCompleteListener(OnCompleteListener<ProviderQueryResult> { task ->
+                if (task.isSuccessful) {
+                    val check = !task.result.providers!!.isEmpty()
+                    if (check) {
+                        Log.i(TAG, "email is available")
+                        emailIsValid = "true"
+                    } else {
+                        Toast.makeText(this@CreateAccountActivity,
+                                "Email adress is already in use", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+        }
+    }
+
+    private fun checkIfUserExists(username: String?) {
+
+    }
+
+    private fun checkPasswordSafety(password: String?) {
+
+    }
+
+    private fun validateInputStringsNotEmpty(username: String?, email: String?, password: String?) {
+        inputsNotEmpty = if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+            "true"
+        } else {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_LONG).show()
+            Log.i(TAG,"wether username , email or password was empty")
+            "false"
         }
     }
 
     private fun redirectUserToMainActivity() {
-        val intent = Intent(this,MainScreenActivity::class.java)
+        val intent = Intent(this, MainScreenActivity::class.java)
         startActivity(intent)
-   }
+    }
 
     //UserInterface Elements
     private var uiUserName: EditText? = null
@@ -102,4 +157,10 @@ class CreateAccountActivity : AppCompatActivity() {
     private var username: String? = null
     private var email: String? = null
     private var password: String? = null
+
+    // CheckVariables
+    private var emailIsValid: String? =  null
+    private var usernameIsValid: String? =  null
+    private var passwordIsValid: String? =  null
+    private var inputsNotEmpty: String? = null
 }
