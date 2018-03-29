@@ -6,20 +6,26 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 
-class LoginActivity : AppCompatActivity() {
+class StartScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.start_screen)
         actionBarSetup()
         val registerButton = findViewById<View>(R.id.registerButton) as Button
         registerButton.setOnClickListener{redirectToCreateAccountActivity()}
 
-
+        val loginButton = findViewById<View>(R.id.loginButton) as Button
+        loginButton.setOnClickListener {redirectToLoginActivity()}
     }
 
     private fun redirectToCreateAccountActivity() {
         val intent = Intent(this,CreateAccountActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun redirectToLoginActivity() {
+        val intent = Intent(this,LoginToAccount::class.java)
         startActivity(intent)
     }
 

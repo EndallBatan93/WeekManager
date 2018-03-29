@@ -11,4 +11,6 @@
     <string name="passwordplaceholder">Enter password min size 6 characters</string>
     <string name="emailplaceholder">Enter valid email adress</string>
     <string name="usernameplaceholder">Choose a username</string>
+    <string name="loginButton">Log in</string>
+    <string name="usernameemail">enter username or email</string>
 </resources>

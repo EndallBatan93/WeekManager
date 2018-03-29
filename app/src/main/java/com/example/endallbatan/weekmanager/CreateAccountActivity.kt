@@ -28,7 +28,6 @@ class CreateAccountActivity : AppCompatActivity() {
     }
 
     private fun initialise() {
-        uiUserName = findViewById<View>(R.id.username) as EditText
         uiEmail = findViewById<View>(R.id.email) as EditText
         uipassword = findViewById<View>(R.id.password) as EditText
         btnGoogleLogin = findViewById<View>(R.id.googleLogin) as Button
@@ -45,23 +44,21 @@ class CreateAccountActivity : AppCompatActivity() {
 
     private fun createNewAccount() {
         //Getting the strings in the texfields | ? means safe call
-        username = uiUserName?.text.toString()
         email = uiEmail?.text.toString()
         password = uipassword?.text.toString()
 
-        validateInputStringsNotEmpty(username, email, password);
+        validateInputStringsNotEmpty(email, password);
 
         if (inputsNotEmpty.equals("true")) {
             validateEmailAdress(email)
-//            checkIfUserExists(username)
-//            checkPasswordSafety(password)
+            checkPasswordSafety(password)
             startRegisteringAtFirebaseDatabase()
         }
 
     }
 
     private fun startRegisteringAtFirebaseDatabase() {
-        if (emailIsValid.equals("true")) {
+        if (emailIsValid.equals("true")&& passwordIsValid.equals("true")) {
             mFirebaseAuth!!
                     .createUserWithEmailAndPassword(email!!, password!!)
                     .addOnCompleteListener(this) { task ->
@@ -70,12 +67,7 @@ class CreateAccountActivity : AppCompatActivity() {
                             Log.d(TAG, "createUserWithEmail:success!")
                             //creating userid with uuid
                             val userid = mFirebaseAuth!!.currentUser!!.uid
-
     //                        verifyEmail()
-
-                            val currenUserDb = mDatabaseReference!!.child(userid)
-                            currenUserDb.child("username").setValue(username)
-
                             redirectUserToMainActivity()
                         } else {
                             Log.w(TAG, "createUserWithEmailAdress: failure", task.exception)
@@ -98,16 +90,17 @@ class CreateAccountActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkIfUserExists(username: String?) {
-
-    }
-
     private fun checkPasswordSafety(password: String?) {
-
+        if(password!!.length < 6) {
+            Toast.makeText(this@CreateAccountActivity,
+                    "password is to short. At least 6 characters",Toast.LENGTH_SHORT).show()
+        } else {
+            passwordIsValid = "true"
+        }
     }
 
-    private fun validateInputStringsNotEmpty(username: String?, email: String?, password: String?) {
-        inputsNotEmpty = if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+    private fun validateInputStringsNotEmpty(email: String?, password: String?) {
+        inputsNotEmpty = if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             "true"
         } else {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_LONG).show()
@@ -122,7 +115,6 @@ class CreateAccountActivity : AppCompatActivity() {
     }
 
     //UserInterface Elements
-    private var uiUserName: EditText? = null
     private var uiEmail: EditText? = null
     private var uipassword: EditText? = null
     private var btnCreateAccountActivity: Button? = null
@@ -137,13 +129,11 @@ class CreateAccountActivity : AppCompatActivity() {
     //Variables
     private val TAG = "CreateAccountActivity"
 
-    private var username: String? = null
     private var email: String? = null
     private var password: String? = null
 
     // CheckVariables
     private var emailIsValid: String? =  null
-    private var usernameIsValid: String? =  null
     private var passwordIsValid: String? =  null
     private var inputsNotEmpty: String? = null
 }
