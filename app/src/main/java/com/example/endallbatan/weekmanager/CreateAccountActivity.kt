@@ -32,7 +32,7 @@ class CreateAccountActivity : AppCompatActivity() {
         uipassword = findViewById<View>(R.id.password) as EditText
         btnGoogleLogin = findViewById<View>(R.id.googleLogin) as Button
         btnFacebookLoging = findViewById<View>(R.id.facebookLogin) as Button
-        btnCreateAccountActivity = findViewById<View>(R.id.createAccountButton) as Button
+        btnCreateAccountActivity = findViewById<View>(R.id.loginButton) as Button
         mDatabase = FirebaseDatabase.getInstance()
         // Users in name of table in Database
         mDatabaseReference = mDatabase!!.reference!!.child("Users")

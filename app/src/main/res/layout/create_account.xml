@@ -45,7 +45,7 @@
         android:layout_marginLeft="16dp" />
 
     <Button
-        android:id="@+id/createAccountButton"
+        android:id="@+id/loginButton"
         style="@android:style/Widget.Button.Inset"
         android:layout_width="318dp"
         android:layout_height="38dp"
@@ -73,7 +73,7 @@
         android:layout_marginTop="34dp"
         android:background="@drawable/facebookicon"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/createAccountButton"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/googleLogin"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -87,7 +87,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="34dp"
         android:background="@drawable/common_google_signin_btn_icon_light"
-        app:layout_constraintBottom_toTopOf="@+id/createAccountButton"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toStartOf="@+id/facebookLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
