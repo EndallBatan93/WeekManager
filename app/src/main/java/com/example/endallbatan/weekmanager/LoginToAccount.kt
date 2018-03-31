@@ -1,15 +1,17 @@
 package com.example.endallbatan.weekmanager
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.login_screen.*
 
 class LoginToAccount : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +45,33 @@ class LoginToAccount : AppCompatActivity() {
     private fun loginToAccount() {
         email = uiEmail?.text.toString()
         password = uiPassword?.text.toString()
+        validateInputStringsNotEmpty(email,password)
+
+        mFirebaseAuth!!.signInWithEmailAndPassword(email!!,password!!)
+                .addOnCompleteListener(this) { task ->
+                    if(task.isSuccessful) {
+                        Log.d(TAG,"signInWithEmailAndPassword:success")
+                        redirectUserToMainActivity()
+                    } else {
+                        Log.w(TAG, "signInWithEmailAndPassword:failed", task.exception)
+                        Toast.makeText(this@LoginToAccount,
+                                "Authentication failed",Toast.LENGTH_SHORT).show()
+                    }
+                }
+    }
+
+    private fun validateInputStringsNotEmpty(email: String?, password: String?) {
+        inputsNotEmpty = if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+            "true"
+        } else {
+            Toast.makeText(this, "Please enter all the details", Toast.LENGTH_LONG).show()
+            Log.i(TAG,"wether username , email or password was empty")
+            "false"
+        }
+    }
+    private fun redirectUserToMainActivity() {
+        val intent = Intent(this, MainScreenActivity::class.java)
+        startActivity(intent)
     }
 
     //User Interface Elements
@@ -62,4 +91,7 @@ class LoginToAccount : AppCompatActivity() {
 
     //Variables
     private val TAG = "LoginToAccountActivity"
+    //CheckVariables
+    private var inputsNotEmpty: String? = null
+
 }
