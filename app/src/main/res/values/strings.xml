@@ -13,4 +13,5 @@
     <string name="usernameplaceholder">Choose a username</string>
     <string name="loginButton">Log in</string>
     <string name="usernameemail">enter username or email</string>
+    <string name="forgotPasswordValue"><u>Forgot password ?</u></string>
 </resources>

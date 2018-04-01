@@ -1,6 +1,7 @@
 package com.example.endallbatan.weekmanager
 
 import android.content.Intent
+import android.nfc.Tag
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
@@ -67,7 +68,7 @@ class CreateAccountActivity : AppCompatActivity() {
                             Log.d(TAG, "createUserWithEmail:success!")
                             //creating userid with uuid
                             val userid = mFirebaseAuth!!.currentUser!!.uid
-    //                        verifyEmail()
+                            verifyEmail()
                             redirectUserToMainActivity()
                         } else {
                             Log.w(TAG, "createUserWithEmailAdress: failure", task.exception)
@@ -79,6 +80,21 @@ class CreateAccountActivity : AppCompatActivity() {
         }
     }
 
+    private fun verifyEmail() {
+            val mUser = mFirebaseAuth!!.currentUser
+            mUser!!.sendEmailVerification()
+                    .addOnCompleteListener(this) { task ->
+
+                        if(task.isSuccessful) {
+                            Toast.makeText(this@CreateAccountActivity,
+                                    "Verfification Email sent to " + mUser.email,Toast.LENGTH_SHORT).show()
+                        } else {
+                            Log.d(TAG,"sending verification email failed:",task.exception)
+                            Toast.makeText(this@CreateAccountActivity,
+                                    "Sending verification email failed",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+    }
     private fun validateEmailAdress(email: String?) {
         val emailPattern = Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
         if (emailPattern.containsMatchIn(email.toString())) {

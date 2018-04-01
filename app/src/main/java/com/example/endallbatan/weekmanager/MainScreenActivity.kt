@@ -11,6 +11,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class MainScreenActivity : AppCompatActivity() {
+
+    override fun onBackPressed() {}
+
     override fun onStart() {
         super.onStart()
         val mUser = mFirebaseAuth!!.currentUser
