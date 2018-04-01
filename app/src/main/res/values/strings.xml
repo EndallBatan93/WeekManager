@@ -14,4 +14,6 @@
     <string name="loginButton">Log in</string>
     <string name="usernameemail">enter username or email</string>
     <string name="forgotPasswordValue"><u>Forgot password ?</u></string>
+    <string name="resetPassword">Reset password</string>
+    <string name="enter_new_password">enter new password</string>
 </resources>

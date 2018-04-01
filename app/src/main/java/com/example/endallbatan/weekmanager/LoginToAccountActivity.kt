@@ -33,13 +33,19 @@ class LoginToAccountActivity : AppCompatActivity() {
         facebookLogin = findViewById<View>(R.id.facebookLogin) as Button
         googleLogin = findViewById<View>(R.id.googleLogin) as Button
         loginButton = findViewById<View>(R.id.loginButton) as Button
-
+        forgotPassword     = findViewById<View>(R.id.resetPasswordButton) as Button
         mDatabase = FirebaseDatabase.getInstance()
         // Users in name of table in Database
         mDatabaseReference = mDatabase!!.reference!!.child("Users")
         mFirebaseAuth = FirebaseAuth.getInstance()
 
         loginButton!!.setOnClickListener{(loginToAccount())}
+        forgotPassword!!.setOnClickListener{(redirectToForgotPasswordActivity())}
+    }
+
+    private fun redirectToForgotPasswordActivity() {
+        val intent = Intent(this, Forgot_Password_Activity::class.java)
+        startActivity(intent)
     }
 
     private fun loginToAccount() {
@@ -75,6 +81,7 @@ class LoginToAccountActivity : AppCompatActivity() {
     }
 
     //User Interface Elements
+    private var forgotPassword: Button? = null
     private var uiEmail: EditText? = null
     private var uiPassword: EditText? = null
     private var googleLogin: Button? = null

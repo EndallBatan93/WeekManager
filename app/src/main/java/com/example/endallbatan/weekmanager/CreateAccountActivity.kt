@@ -1,7 +1,6 @@
 package com.example.endallbatan.weekmanager
 
 import android.content.Intent
-import android.nfc.Tag
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
@@ -19,7 +18,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.create_account)
+        setContentView(R.layout.create_account_screen)
         actionBarSetup()
         initialise()
     }
