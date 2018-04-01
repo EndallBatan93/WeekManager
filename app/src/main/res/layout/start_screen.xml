@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/weekplannersceen"
-    tools:context="com.example.endallbatan.weekmanager.StartScreen">
+    tools:context="com.example.endallbatan.weekmanager.StartScreenActivity">
 
     <Button
         android:id="@+id/loginButton"

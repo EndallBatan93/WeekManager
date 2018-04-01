@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class LoginToAccount : AppCompatActivity() {
+class LoginToAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_screen)
@@ -54,7 +54,7 @@ class LoginToAccount : AppCompatActivity() {
                         redirectUserToMainActivity()
                     } else {
                         Log.w(TAG, "signInWithEmailAndPassword:failed", task.exception)
-                        Toast.makeText(this@LoginToAccount,
+                        Toast.makeText(this@LoginToAccountActivity,
                                 "Authentication failed",Toast.LENGTH_SHORT).show()
                     }
                 }

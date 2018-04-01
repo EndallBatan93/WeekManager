@@ -1,5 +1,6 @@
 package com.example.endallbatan.weekmanager
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -10,7 +11,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class MainScreenActivity : AppCompatActivity() {
-
     override fun onStart() {
         super.onStart()
         val mUser = mFirebaseAuth!!.currentUser
@@ -34,6 +34,12 @@ class MainScreenActivity : AppCompatActivity() {
 
     private fun logout() {
         mFirebaseAuth!!.signOut()
+        redirectToLoginActivity()
+    }
+
+    private fun redirectToLoginActivity() {
+        val intent = Intent(this,StartScreenActivity::class.java)
+        startActivity(intent)
     }
 
     private var uiLogoutButton:Button? = null

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 
-class StartScreen : AppCompatActivity() {
+class StartScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class StartScreen : AppCompatActivity() {
     }
 
     private fun redirectToLoginActivity() {
-        val intent = Intent(this,LoginToAccount::class.java)
+        val intent = Intent(this,LoginToAccountActivity::class.java)
         startActivity(intent)
     }
 
