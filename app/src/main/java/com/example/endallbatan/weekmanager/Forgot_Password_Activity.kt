@@ -1,5 +1,6 @@
 package com.example.endallbatan.weekmanager
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
@@ -39,7 +40,8 @@ class Forgot_Password_Activity : AppCompatActivity() {
                     .addOnCompleteListener(this) {task ->
                         if(task.isSuccessful) {
                             Toast.makeText(this@Forgot_Password_Activity,
-                                    "Reset Link sent to " + mFirebaseAuth!!.currentUser!!.email, Toast.LENGTH_SHORT).show()
+                                    "Reset Link sent to:$email", Toast.LENGTH_SHORT).show()
+                                    redirectUserToLoginActivity()
                         } else {
                             Log.d(TAG, "reset password failed", task.exception)
                             Toast.makeText(this@Forgot_Password_Activity,
@@ -47,6 +49,11 @@ class Forgot_Password_Activity : AppCompatActivity() {
                         }
                     }
         }
+    }
+
+    private fun redirectUserToLoginActivity() {
+        val intent = Intent(this, LoginToAccountActivity::class.java)
+        startActivity(intent)
     }
 
     private var uiResetButton: Button? =  null

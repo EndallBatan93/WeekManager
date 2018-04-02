@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -33,7 +34,7 @@ class LoginToAccountActivity : AppCompatActivity() {
         facebookLogin = findViewById<View>(R.id.facebookLogin) as Button
         googleLogin = findViewById<View>(R.id.googleLogin) as Button
         loginButton = findViewById<View>(R.id.loginButton) as Button
-        forgotPassword     = findViewById<View>(R.id.resetPasswordButton) as Button
+        forgotPassword = findViewById<View>(R.id.forgotPassword) as TextView
         mDatabase = FirebaseDatabase.getInstance()
         // Users in name of table in Database
         mDatabaseReference = mDatabase!!.reference!!.child("Users")
@@ -81,7 +82,7 @@ class LoginToAccountActivity : AppCompatActivity() {
     }
 
     //User Interface Elements
-    private var forgotPassword: Button? = null
+    private var forgotPassword: TextView? = null
     private var uiEmail: EditText? = null
     private var uiPassword: EditText? = null
     private var googleLogin: Button? = null
