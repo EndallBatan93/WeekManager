@@ -1,7 +1,8 @@
-package com.example.endallbatan.weekmanager
+package com.example.endallbatan.weekmanager.activites
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.endallbatan.weekmanager.R
 
 
 class ForgotPasswordActivity : AppCompatActivity() {

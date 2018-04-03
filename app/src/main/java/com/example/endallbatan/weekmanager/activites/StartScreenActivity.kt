@@ -1,10 +1,11 @@
-package com.example.endallbatan.weekmanager
+package com.example.endallbatan.weekmanager.activites
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.example.endallbatan.weekmanager.R
 
 class StartScreenActivity : AppCompatActivity() {
 
@@ -20,12 +21,12 @@ class StartScreenActivity : AppCompatActivity() {
     }
 
     private fun redirectToCreateAccountActivity() {
-        val intent = Intent(this,CreateAccountActivity::class.java)
+        val intent = Intent(this, CreateAccountActivity::class.java)
         startActivity(intent)
     }
 
     private fun redirectToLoginActivity() {
-        val intent = Intent(this,LoginToAccountActivity::class.java)
+        val intent = Intent(this, LoginToAccountActivity::class.java)
         startActivity(intent)
     }
 
