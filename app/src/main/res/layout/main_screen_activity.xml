@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/weekplannersceen">
 
 
     <Button
@@ -23,8 +24,8 @@
     <Button
         android:id="@+id/logoutButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="16dp"
-        android:layout_height="15dp"
+        android:layout_width="20dp"
+        android:layout_height="18dp"
         android:layout_marginEnd="1dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
@@ -111,6 +112,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saturday" />
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="27dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/zahnrad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sunday" />
 
 
 </android.support.constraint.ConstraintLayout>

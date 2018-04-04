@@ -8,6 +8,11 @@ class TasksForDayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tasks_for_day_layout)
+        actionBarSetup()
+    }
 
+    private fun actionBarSetup() {
+        val weekday = intent.getStringExtra("weekday")
+        title = "Tasks for $weekday"
     }
 }

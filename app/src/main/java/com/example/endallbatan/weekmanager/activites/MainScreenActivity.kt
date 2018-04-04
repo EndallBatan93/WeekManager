@@ -82,6 +82,7 @@ class MainScreenActivity : AppCompatActivity() {
 
     private fun goTodDayView(weekday: String) {
         val intent = Intent(this, TasksForDayActivity::class.java)
+        intent.putExtra("weekday",weekday)
         startActivity(intent)
     }
 
