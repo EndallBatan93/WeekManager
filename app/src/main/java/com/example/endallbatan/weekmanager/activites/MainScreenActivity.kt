@@ -24,8 +24,8 @@ class MainScreenActivity : AppCompatActivity() {
         val mUser = mFirebaseAuth!!.currentUser
     }
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.main_screen_activity)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_screen_activity)
         actionBarSetup()
         initialise()
     }

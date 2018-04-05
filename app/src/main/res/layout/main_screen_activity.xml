@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/weekplannersceen">
+    android:background="@color/colorPrimaryDark">
 
 
     <Button
@@ -17,6 +17,7 @@
         android:layout_marginTop="8dp"
         android:text="Monday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
@@ -44,6 +45,7 @@
         android:layout_marginTop="16dp"
         android:text="Tuesday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/monday" />
@@ -57,6 +59,7 @@
         android:layout_marginTop="16dp"
         android:text="Wednesday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tuesday" />
@@ -70,6 +73,7 @@
         android:layout_marginTop="16dp"
         android:text="Thursday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wednesday" />
@@ -83,6 +87,7 @@
         android:layout_marginTop="16dp"
         android:text="Friday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thursday" />
@@ -96,6 +101,7 @@
         android:layout_marginTop="16dp"
         android:text="Saturday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/friday" />
@@ -109,6 +115,7 @@
         android:layout_marginTop="16dp"
         android:text="Sunday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saturday" />

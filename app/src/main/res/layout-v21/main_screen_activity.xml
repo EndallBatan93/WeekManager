@@ -4,14 +4,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
 
+
+    <Button
+        android:id="@+id/monday"
+        android:layout_width="344dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Monday"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
 
     <Button
         android:id="@+id/logoutButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="16dp"
-        android:layout_height="15dp"
+        android:layout_width="20dp"
+        android:layout_height="18dp"
         android:layout_marginEnd="1dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
@@ -22,21 +37,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/monday"
-        style="@android:style/Widget.Material.Button"
-        android:layout_width="344dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="Monday"
-        android:textAlignment="viewStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="start" />
-
-    <Button
         android:id="@+id/tuesday"
         android:layout_width="344dp"
         android:layout_height="47dp"
@@ -45,6 +45,7 @@
         android:layout_marginTop="16dp"
         android:text="Tuesday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/monday" />
@@ -58,6 +59,7 @@
         android:layout_marginTop="16dp"
         android:text="Wednesday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tuesday" />
@@ -71,6 +73,7 @@
         android:layout_marginTop="16dp"
         android:text="Thursday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wednesday" />
@@ -84,6 +87,7 @@
         android:layout_marginTop="16dp"
         android:text="Friday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thursday" />
@@ -97,6 +101,7 @@
         android:layout_marginTop="16dp"
         android:text="Saturday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/friday" />
@@ -110,8 +115,22 @@
         android:layout_marginTop="16dp"
         android:text="Sunday"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saturday" />
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="27dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/zahnrad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sunday" />
+
 
 </android.support.constraint.ConstraintLayout>
