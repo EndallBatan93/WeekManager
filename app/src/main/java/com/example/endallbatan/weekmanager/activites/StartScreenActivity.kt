@@ -13,6 +13,7 @@ class StartScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.start_screen)
         actionBarSetup()
+
         val registerButton = findViewById<View>(R.id.registerButton) as Button
         registerButton.setOnClickListener{redirectToCreateAccountActivity()}
 
