@@ -23,7 +23,7 @@ class TasksForDayActivity : AppCompatActivity() {
     }
 
     private fun actionBarSetup() {
-        val weekday = intent.getStringExtra("weekday")
+         weekday = intent.getStringExtra("weekday")
         title = "Tasks for $weekday"
     }
 
@@ -31,7 +31,7 @@ class TasksForDayActivity : AppCompatActivity() {
         TAG = "TasksForDayActivity"
         taskObjectItems = arrayOf()
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        val databaseReference: DatabaseReference = database.getReference("Tasks")
+        val databaseReference: DatabaseReference = database.getReference("Tasks$weekday")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
                 Log.e(TAG, "Tasks could not be retrieved from Database")
@@ -41,6 +41,7 @@ class TasksForDayActivity : AppCompatActivity() {
                 val children = snapshot!!.children
                 children.forEach {
                     val taskHashMap = it.value as HashMap<*, *>
+                    clearLists()
                     for (mutableEntry in taskHashMap) {
                         val value = mutableEntry.value as HashMap<*, *>
                         val task = Task(value.get("name").toString(), value.get("description").toString())
@@ -49,17 +50,21 @@ class TasksForDayActivity : AppCompatActivity() {
                     for (item in taskObjectItems!!) {
                         listItems = listItems!!.plus(item.name)
                     }
-
                     val adapter = TaskAdapter(this@TasksForDayActivity, listItems!!)
                     taskList!!.adapter = adapter
                 }
             }
-
         })
-
         taskList = findViewById<View>(R.id.tasksForDay) as ListView
         addTask = findViewById<View>(R.id.addTask) as Button
         addTask!!.setOnClickListener { (addTaskToDay(databaseReference)) }
+    }
+
+    private fun clearLists() {
+        listItems = null
+        listItems = arrayOf()
+        taskObjectItems = null
+        taskObjectItems = arrayOf()
     }
 
     private fun addTaskToDay(databaseReference: DatabaseReference) {
@@ -86,8 +91,10 @@ class TasksForDayActivity : AppCompatActivity() {
 
     private var taskList: ListView? = null
     private var addTask: Button? = null
+    private var weekday: String? = null
     private var listItems: Array<String>? = arrayOf()
     private var taskObjectItems: Array<Task>? = arrayOf()
     private var TAG: String? = null
+
 
 }
