@@ -1,5 +1,6 @@
 package com.example.endallbatan.weekmanager.activites
 
+import adapter.TaskAdapter
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -28,27 +29,37 @@ class TasksForDayActivity : AppCompatActivity() {
 
     private fun initialise() {
         TAG = "TasksForDayActivity"
-        val database:FirebaseDatabase = FirebaseDatabase.getInstance()
-        val databaseReference:DatabaseReference = database.getReference("Tasks")
-        databaseReference.addValueEventListener(object:ValueEventListener{
+        taskObjectItems = arrayOf()
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val databaseReference: DatabaseReference = database.getReference("Tasks")
+        databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
-                Log.e(TAG,"Tasks could not be retrieved from Database")
+                Log.e(TAG, "Tasks could not be retrieved from Database")
             }
 
             override fun onDataChange(snapshot: DataSnapshot?) {
-                val s = snapshot!!.getValue() as HashMap<*, *>
+                val children = snapshot!!.children
+                children.forEach {
+                    val taskHashMap = it.value as HashMap<*, *>
+                    for (mutableEntry in taskHashMap) {
+                        val value = mutableEntry.value as HashMap<*, *>
+                        val task = Task(value.get("name").toString(), value.get("description").toString())
+                        taskObjectItems = taskObjectItems!!.plus(task)
+                    }
+                    for (item in taskObjectItems!!) {
+                        listItems = listItems!!.plus(item.name)
+                    }
+
+                    val adapter = TaskAdapter(this@TasksForDayActivity, listItems!!)
+                    taskList!!.adapter = adapter
+                }
             }
 
         })
 
         taskList = findViewById<View>(R.id.tasksForDay) as ListView
         addTask = findViewById<View>(R.id.addTask) as Button
-
         addTask!!.setOnClickListener { (addTaskToDay(databaseReference)) }
-
-//        val listItems = arrayOf(name)
-//        val adapter = TaskAdapter(this@TasksForDayActivity,listItems)
-//        taskList!!.adapter = adapter
     }
 
     private fun addTaskToDay(databaseReference: DatabaseReference) {
@@ -75,7 +86,8 @@ class TasksForDayActivity : AppCompatActivity() {
 
     private var taskList: ListView? = null
     private var addTask: Button? = null
-    private var listItems:Array<String>? = null
-    private var TAG:String? = null
+    private var listItems: Array<String>? = arrayOf()
+    private var taskObjectItems: Array<Task>? = arrayOf()
+    private var TAG: String? = null
 
 }
